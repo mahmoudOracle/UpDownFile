@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="UpDownPagePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Files1" RangeSize="25" DataControl="AppModuleAMDataControl" id="Files1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Files1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Files1Iterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="Files1Iterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="Files1Iterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="Files1Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="Files1Iterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="Files1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">UpDownPage</property>
+      <property
+         name="x">472.02246</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>UpDownPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">200.79883</property>
+      <property
+         name="page">/UpDownPage.jsf</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+</SDM>

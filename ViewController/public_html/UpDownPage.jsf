@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="UpDownPage.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1" usesUpload="true">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="50px" id="gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Header -->
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                        <!-- Content -->
+                        <af:panelHeader text="panelHeader 1" id="ph1">
+                            <f:facet name="context"/>
+                            <f:facet name="toolbar">
+                                <af:toolbar id="t1">
+                                    <af:button actionListener="#{bindings.CreateInsert.execute}" text="CreateInsert"
+                                               disabled="#{!bindings.CreateInsert.enabled}" id="b5"/>
+                                    <af:button actionListener="#{bindings.Commit.execute}" text="Commit"
+                                               disabled="#{!bindings.Commit.enabled}" id="b6"/>
+                                    <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                                               disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b7">
+                                        <af:resetActionListener/>
+                                    </af:button>
+                                </af:toolbar>
+                            </f:facet>
+                            <f:facet name="menuBar"/>
+                            <f:facet name="legend"/>
+                            <f:facet name="info"/>
+                            <af:panelFormLayout id="pfl1">
+                                <af:inputText value="#{bindings.Id.inputValue}" label="#{bindings.Id.hints.label}"
+                                              required="#{bindings.Id.hints.mandatory}"
+                                              columns="#{bindings.Id.hints.displayWidth}"
+                                              maximumLength="#{bindings.Id.hints.precision}"
+                                              shortDesc="#{bindings.Id.hints.tooltip}" id="it1">
+                                    <f:validator binding="#{bindings.Id.validator}"/>
+                                    <af:convertNumber groupingUsed="false" pattern="#{bindings.Id.format}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Name.inputValue}" label="#{bindings.Name.hints.label}"
+                                              required="#{bindings.Name.hints.mandatory}"
+                                              columns="#{bindings.Name.hints.displayWidth}"
+                                              maximumLength="#{bindings.Name.hints.precision}"
+                                              shortDesc="#{bindings.Name.hints.tooltip}" id="it2">
+                                    <f:validator binding="#{bindings.Name.validator}"/>
+                                </af:inputText>
+                                <af:inputFile label="Add File" id="if1" autoSubmit="true"
+                                              valueChangeListener="#{imageBean.uploadFileValueChangeEvent}"/>
+                                <f:facet name="footer">
+                                    <af:panelGroupLayout layout="horizontal" id="pgl2">
+                                        <af:button actionListener="#{bindings.First.execute}" text="First"
+                                                   disabled="#{!bindings.First.enabled}" partialSubmit="true" id="b1"/>
+                                        <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                                                   disabled="#{!bindings.Previous.enabled}" partialSubmit="true"
+                                                   id="b2"/>
+                                        <af:button actionListener="#{bindings.Next.execute}" text="Next"
+                                                   disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3"/>
+                                        <af:button actionListener="#{bindings.Last.execute}" text="Last"
+                                                   disabled="#{!bindings.Last.enabled}" partialSubmit="true" id="b4"/>
+                                        <af:button text="Download File" id="b8">
+                                            <af:fileDownloadActionListener filename="#{bindings.Id.inputValue}"
+                                                                           method="#{imageBean.downloadImage}"/>
+                                        </af:button>
+                                    </af:panelGroupLayout>
+                                </f:facet>
+                            </af:panelFormLayout>
+                        </af:panelHeader>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+</f:view>
